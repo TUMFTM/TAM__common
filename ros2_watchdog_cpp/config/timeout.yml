@@ -1,0 +1,15 @@
+---
+TimeoutValues_ms:
+  ros__parameters:
+    Multiplier: 1.0
+    Default: 5000
+    # Nodes
+    TrackingController: 1000
+    TrackingPrediction: 1000
+    JoystickManual: 1000
+    JoystickAutonomous: 1000
+    WatchdogNode: 1000
+    RacelinePlanner: 1000
+    SamplingPlanner: 1000
+    StateEstimation: 1000
+    StateMachine: 1000

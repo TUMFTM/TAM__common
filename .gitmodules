@@ -1,0 +1,15 @@
+[submodule "submodules/parameter_management"]
+	path = submodules/parameter_management
+	url = https://github.com/TUMFTM/TAM__param_management.git
+[submodule "submodules/time_series_logging"]
+	path = submodules/time_series_logging
+	url = https://github.com/TUMFTM/tsl.git
+[submodule "submodules/tam__msgs"]
+	path = submodules/tam__msgs
+	url = https://github.com/TUMFTM/TAM__msgs
+[submodule "submodules/tier4_autoware_msgs"]
+	path = submodules/tier4_autoware_msgs
+	url = https://github.com/tier4/tier4_autoware_msgs
+[submodule "submodules/autoware_msgs"]
+	path = submodules/autoware_msgs
+	url = https://github.com/autowarefoundation/autoware_msgs

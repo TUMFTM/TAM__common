@@ -1,92 +1,92 @@
-# iac_common
+# TUM Autonomous Motorsport: Common Library
+
+This repository contains a collection of common functionality used in various modules of the software stack of TUM Autonomous Motorsport.
+
+## Repository Content
+
+This repository contains several packages that can be built. Below is a list of the available packages along with a brief description of their contents.
+
+| Package Name        | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| [`can_comms_cpp`](./can_comms_cpp/README.md) | C++ library for CAN communication |
+| [`limit_handler_cpp`](./limit_handler_cpp/README.md) | C++ library for handling acceleration limits |
+| [`limit_handler_py`](./limit_handler_cpp/README.md) | Python binding for limit_handler_cpp |
+| [`network_communication`](./network_communication/README.md) | UDP/ROS Bride for communication between Non-ROS and ROS Modules via given msg Definitions |
+| [`ros2_watchdog_cpp`](./ros2_watchdog_cpp/README.md) | C++ library for monitoring ROS2 topics and nodes |
+| [`ros2_watchdog_py`](./ros2_watchdog_cpp/README.md) | Python binding for ros2_watchdog_cpp |
+| [`track_handler_cpp`](./track_handler_cpp/README.md) | C++ library for handling and processing race track files |
+| [`track_handler_py`](./track_handler_cpp/README.md) | Python binding for track_handler_cpp |
+| [`tum_helpers_cpp`](./tum_helpers_cpp/README.md) | Various helper and conversion functions for C++ applications |
+| [`tum_helpers_py`](./tum_helpers_cpp/README.md) | Python binding of tum_helpers_cpp |
+| [`tum_ros_helpers_cpp`](./tum_ros_helpers_cpp/README.md) | C++ library for providing helper functions for ROS2 applications |
+| [`tum_type_conversions_ros_cpp`](./tum_type_conversions_ros_cpp/README.md) | Various message type conversions for C++ applications |
+| [`tum_type_conversions_ros_py`](./tum_type_conversions_ros_cpp/README.md) | Python binding for tum_type_conversions_ros_cpp |
+| [`tum_types_cpp`](./tum_types_cpp/README.md) | C++ library containing common struct definitions for data handling |
+| [`tum_types_py`](./tum_types_cpp/README.md) | Python binding for tum_types_cpp |
+| [`vehicle_handler_cpp`](./vehicle_handler_cpp/README.md) | C++ library for handling vehicle parameter and vehcile specific calculations |
+| [`vehicle_handler_py`](./vehicle_handler_cpp/README.md) | Python binding for vehicle_handler_cpp |
+| [`boost_sml`](./vendor_pkgs/boost_sml/README.md) | Vendor Package for the Open Source State Machine Library for C++ |
+| [`matplotlib_cpp`](./vendor_pkgs/matplotlib_cpp/README.md) | Vendor Package for the Open Source Plotting library for C++ applications |
+
+### Externally Included Repositories
+
+| Package Name        | Description                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| [`parameter_management`](https://github.com/TUMFTM/TAM__param_management/tree/main) | Parameter Management Library of TUM Autonmous Motorsport |
+| [`time_series_logging`](https://github.com/TUMFTM/tsl) | The time series logging library of TUM Autonomous Motorsport |
+| [`boost_sml`](https://github.com/boost-ext/sml) | State Machine Library for C++ |
+| [`matplotlib_cpp`](https://github.com/lava/matplotlib-cpp) | Plotting functionality for C++ applications |
 
 
+## Building the Project
 
-## Getting started
+### Installing the required dependencies
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+*Attention: The repository contains submodules so please clone with the `--recursive` option*
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+We are using Ubuntu 22.04 and ROS 2 Humble for building the project. 
+We expect later releases of Ubuntu and ROS 2 to work as well, but we haven't tested it so far.
 
-## Add your files
+Additionally, the following packages have to be installed:
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
+```bash
+sudo apt install libboost-dev
+sudo apt install ros-${ROS_DISTRO}-can-msgs
+sudo apt install ros-${ROS_DISTRO}-ros2-socketcan 
+sudo apt install ros-${ROS_DISTRO}-geographic-msgs # Required for autoware msgs
 ```
-cd existing_repo
-git remote add origin https://gitlab.lrz.de/iac/iac_common.git
-git branch -M main
-git push -uf origin main
+
+### Compiling the library.
+
+After installing the required dependencies, all packages should compile using colcon.
+
+```bash
+colcon build
 ```
 
-## Integrate with your tools
+### Disclaimer
 
-- [ ] [Set up project integrations](https://gitlab.lrz.de/iac/iac_common/-/settings/integrations)
+At this point, we cannot guarantee API stability since we are continuously developing and improving our software stack.
+While we always try to avoid these, breaking changes could happen in future updates of the message definitions.
 
-## Collaborate with your team
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+## References
+### Curvilinear Cosy
+Implementation of [segment.cpp](tum_helpers_cpp/src/segment.cpp), [segment.hpp](tum_helpers_cpp/include/tum_helpers_cpp/coordinate_system/segment.hpp), [curvilinear_cosy.cpp](tum_helpers_cpp/src/curvilinear_cosy.cpp), [curvilinear_cosy.hpp](tum_helpers_cpp/include/tum_helpers_cpp/coordinate_system/curvilinear_cosy.hpp) adapted from:
+- https://ieeexplore.ieee.org/abstract/document/6856487
+- https://gitlab.lrz.de/tum-cps/commonroad-drivability-checker/-/tree/master/cpp/geometry
+- see [License](tum_helpers_cpp/src/LICENSE)
 
-## Test and Deploy
 
-Use the built-in continuous integration in GitLab.
+### Contributors
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+The main contributors of the Project are:
+- [Simon Sagmeister](https://github.com/simonsag96)
+- [Simon Hoffmann](https://github.com/simonh92)
+- [Phillip Pitschi](https://github.com/PhillPi) - Mainly contributing to the message conversion library
+- [Maximilian Leitenstern](https://github.com/mleitenstern) - Mainly developing and implementing the vehicle handler
+- [Dominic Ebner](https://github.com/Dekadee)
+- [Daniel Esser](https://github.com/DaniEsser)
+- [Marcel Weinmann](https://github.com/MarcelWeinmann)
 
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+We also want to thank all other members of TUM Autonomous Motorsport for actively developing this library.
