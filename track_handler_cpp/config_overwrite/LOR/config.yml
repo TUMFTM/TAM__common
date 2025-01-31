@@ -1,0 +1,16 @@
+---
+TrackHandler:
+  ros__parameters:
+    global:
+      pitlane: "Lucas_Oil_raceline_center.csv"
+      raceline: "Lucas_Oil_raceline_center.csv"
+      initial_heading: 0.0 # rad
+      geo_origin: [39.810197, -86.34254, 0.0] # lat, long, h
+    prediction:
+      pitlane: "Lucas_Oil_raceline_center.csv"
+      raceline: "Lucas_Oil_raceline_center.csv"
+    simulation:
+      start_pos_1: [82.657578, 260.989198, -1.578523] # x_m, y_m, theta_rad aus raceline file   
+      start_pos_2: [-13.46, -118.31, 0.123628]
+      start_pos_3: [-20.71,-699.42, -0.657]
+      start_pos_4: [-81.0, -651.0, -0.65] #pit

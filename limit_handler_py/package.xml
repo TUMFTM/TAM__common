@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>limit_handler_py</name>
+  <version>0.15.5</version>
+  <description>Python bindings for limit_handler package, helpers functions for vehicle dynamics limits</description>
+  <maintainer email="simon.hoffmann@tum.de">Simon Hoffmann</maintainer>
+  <license>Apache 2.0</license>
+
+  <author email="simon.hoffmann@tum.de">Simon Hoffmann</author>
+
+  <buildtool_depend>ament_cmake_ros</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend>
+  <buildtool_depend>python_cmake_module</buildtool_depend>
+
+  <depend>pybind11_vendor</depend>
+
+  <!-- Content dependencies -->
+  <depend>tum_types_py</depend>
+  <depend>tum_types_cpp</depend>
+  <depend>limit_handler_cpp</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
